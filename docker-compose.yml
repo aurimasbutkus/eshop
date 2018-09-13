@@ -1,0 +1,31 @@
+nginx:
+  image: nginx:1.13.3
+  volumes:
+      - ./config/nginx-docker.conf:/etc/nginx/nginx.conf
+  volumes_from:
+    - php
+  links:
+    - php
+  ports:
+    - 80:80
+
+mysql:
+  image: mysql:5.7.20
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: homestead
+    MYSQL_USER: homestead
+    MYSQL_PASSWORD: secret
+  volumes:
+    - ./data/db:/var/lib/mysql
+predis:
+   image: redis:latest
+php:
+  image: vaidaslungis/docker-php:7.1.8-fpm
+  links:
+    - mysql
+  volumes:
+    - ./:/var/www/html/
+  
