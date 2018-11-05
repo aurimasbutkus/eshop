@@ -19,7 +19,7 @@
                                 </p>
                             </div>
                             <div class="col-xs-12 col-md-4 pull-right">
-                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="#"><span
+                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="{{ route('product') }}"><span
                                             class="glyphicon glyphicon-eye-open"></span></a>
                                 <a class="btn btn-success" data-toggle="tooltip" title="Add to cart" href="#"><span
                                             class="glyphicon glyphicon-shopping-cart"></span></a>
