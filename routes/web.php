@@ -16,3 +16,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'ProductController@index');
+
+Route::get('/order', 'OrderController@index')->name('order');
+
+Route::get('/checkout', 'OrderController@checkout')->name('order');
+
+Route::get('/payment', 'OrderController@payment')->name('payment');
