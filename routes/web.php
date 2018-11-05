@@ -16,3 +16,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'ProductController@index');
+
+Route::get('/allUsers', 'UserController@getallUsers')->name('allUsers');
+
+Route::get('/editUser', 'UserController@editUser')->name('editUser');
+
+Route::get('/exportbuyerList', 'UserController@userWithOderList')->name('exportbuyerList');
+
+Route::get('/seePurchaseHistory', 'UserController@seePurchaseHistory')->name('seePurchaseHistory');
