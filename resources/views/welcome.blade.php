@@ -39,6 +39,11 @@
                 right: 10px;
                 top: 18px;
             }
+            .top-left {
+                position: absolute;
+                left: 10px;
+                top: 18px;
+            }
 
             .content {
                 text-align: center;
@@ -76,14 +81,17 @@
                 </div>
             @endif
 
+            <div class="top-left">
+                <a href="{{ route('allUsers') }}">Users</a>
+            </div>
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    E.shop
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+
+
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
