@@ -16,3 +16,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'ProductController@index');
+
+Route::get('/allReviews', 'ReviewController@allReviews')->name('allReviews');
+
+
+Route::get('/editReview', 'ReviewController@editReview')->name('editReview');
+
+Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStatistics');

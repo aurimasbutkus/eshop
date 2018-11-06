@@ -27,6 +27,9 @@
                 <li><a href="#">Deals</a></li>
                 <li><a href="#">Stores</a></li>
                 <li><a href="#">Contact</a></li>
+                <li><a href="{{route('allReviews')}}">Reviews</a></li>
+                <li><a href="{{route('showStatistics')}}">Statistics</a></li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
