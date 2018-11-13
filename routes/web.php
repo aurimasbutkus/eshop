@@ -25,13 +25,13 @@ Route::get('/payment', 'OrderController@payment')->name('payment');
 
 Route::get('/allReviews', 'ReviewController@allReviews')->name('allReviews');
 
-
 Route::get('/editReview', 'ReviewController@editReview')->name('editReview');
 
 Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStatistics');
+
 Route::get('/', 'ProductController@index')->name('main');
 
-Route::get('/product', 'ProductController@show')->name('product');
+Route::get('/product/{product}', 'ProductController@show')->name('product');
 
 Route::get('/allUsers', 'UserController@getallUsers')->name('allUsers');
 

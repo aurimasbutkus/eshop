@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('product.index');
+        $products = Product::all();
+        return view('product.index')->with('products', $products);
     }
 
-    public function show()
+    public function show(Product $product)
     {
-        return view('product.show');
-
+        return view('product.show')->with('product', $product);
     }
 }
