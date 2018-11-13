@@ -15,6 +15,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', 'ProductController@index');
+
+Route::get('/order', 'OrderController@index')->name('order');
+
+Route::get('/checkout', 'OrderController@checkout')->name('order');
+
+Route::get('/payment', 'OrderController@payment')->name('payment');
+
+Route::get('/allReviews', 'ReviewController@allReviews')->name('allReviews');
+
+
+Route::get('/editReview', 'ReviewController@editReview')->name('editReview');
+
+Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStatistics');
 Route::get('/', 'ProductController@index')->name('main');
 
 Route::get('/product', 'ProductController@show')->name('product');

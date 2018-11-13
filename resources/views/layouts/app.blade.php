@@ -29,12 +29,15 @@
                     <li><a href="{{route('allUsers')}}">Display users</a></li>
                 <li><a href="{{route('exportbuyerList')}}">Export order list</a></li>
                 <li><a href="#">Contact</a></li>
+                    <li><a href="{{route('allReviews')}}">Reviews</a></li>
+                    <li><a href="{{route('showStatistics')}}">Statistics</a></li>
                 @endauth
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @auth
                     <li><a href="{{route('editUser')}}"><span class="glyphicon glyphicon-user"></span> Edit account</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="/order"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                     <li>
                         <a onclick="$('#logout-form').submit()">Logout</a>
                         <form id="logout-form" method="POST" action="{{ @route('logout') }}">
