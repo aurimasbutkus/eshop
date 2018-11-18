@@ -8,8 +8,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('product.index')->with('products', $products);
+        $products = Product::active();
+        $categories = Product::categories();
+        return view('product.index')->with('products', $products)->with('categories', $categories);
     }
 
     public function show(Product $product)
