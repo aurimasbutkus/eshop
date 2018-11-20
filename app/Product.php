@@ -20,4 +20,9 @@ class Product extends Model
     {
         return self::where('status', 'active')->get();
     }
+
+    public function Orders()
+    {
+        return $this->belongsToMany('App\Order');
+    }
 }

@@ -17,5 +17,8 @@
         "laravel-mix": "^2.0",
         "popper.js": "^1.12"
     },
-    "dependencies": {}
+    "dependencies": {
+        "datatables.net": "^1.10.19",
+        "datatables.net-dt": "^1.10.19"
+    }
 }
