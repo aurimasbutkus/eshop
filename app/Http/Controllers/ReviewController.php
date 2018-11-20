@@ -23,4 +23,17 @@ class ReviewController extends Controller
 
         return view('reviews.showStatistics');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+        'body' => 'required|alpha_num',
+            'user_id' => 'required|numeric'
+            ]);
+        $review = new Review;
+
+        $review->name = $request->name;
+
+        $review->save();
+    }
 }

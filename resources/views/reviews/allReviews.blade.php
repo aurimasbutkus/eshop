@@ -21,8 +21,9 @@
             <hr>
             <h4>Leave a review:</h4>
             <form role="form">
+                <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                 <div class="form-group">
-                    <textarea class="form-control" rows="3" required></textarea>
+                    <textarea class="form-control" rows="3" required name = 'body' autofocus></textarea>
                 </div>
                 <div class="form-group">
                 Rating: 3

@@ -20,4 +20,9 @@ class Product extends Model
     {
         return self::where('status', 'active')->get();
     }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
