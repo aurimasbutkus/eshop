@@ -21,7 +21,7 @@ class Product extends Model
         return self::where('status', 'active')->get();
     }
 
-    public function Orders()
+    public function orders()
     {
         return $this->belongsToMany('App\Order');
     }
@@ -29,5 +29,10 @@ class Product extends Model
     public function reviews()
     {
         return $this->hasMany('App\Review');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

@@ -29,6 +29,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                         <div class="dropdown-menu">
                             <a href="{{ route('new-product') }}" class="dropdown-item">New Product</a>
+                            <a href="{{ route('list-products') }}" class="dropdown-item">List Products</a>
                         </div>
                     </li>
                 @endif
