@@ -25,7 +25,7 @@
                     <textarea  name="text" class="form-control" rows="3" required autofocus></textarea>
                     @csrf
                 </div>
-                <input name="productName" type="hidden" value="">
+                <input name="productName" type="hidden" value="{{'name'}}">
                 <div class="form-group">
                     <h4>Reitingas:</h4>
                     <select name="rating">

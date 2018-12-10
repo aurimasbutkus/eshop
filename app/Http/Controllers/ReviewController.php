@@ -21,8 +21,9 @@ class ReviewController extends Controller
 
     public function showStatistics()
     {
+        $stat =  DB::select("SELECT * from reviews");
 
-        return view('reviews.showStatistics');
+        return view('reviews.showStatistics')->with('reviews', $stat);
     }
 
     public function store(Request $request)

@@ -69,8 +69,13 @@ Route::post('editR', 'ReviewController@updateR');
 
 Route::get('/', 'ProductController@index')->name('main');
 
-Route::get('/products', 'ProductController@create')->name('new-product');
-Route::post('/products', 'ProductController@store')->name('create-product');
+Route::get('/products/new', 'ProductController@create')->name('new-product')->middleware('admin');
+Route::post('/products', 'ProductController@store')->name('create-product')->middleware('admin');
+
+Route::get('/products/{product}/edit', 'ProductController@edit')->name('edit-product')->middleware('admin');
+Route::post('/products/{product}/edit', 'ProductController@update')->name('update-product')->middleware('admin');
+Route::delete('/products/{product}/delete', 'ProductController@destroy')->name('delete-product')->middleware('admin');
+Route::get('/products', 'ProductController@adminIndex')->name('list-products')->middleware('admin');
 
 Route::get('/product/{product}', 'ProductController@show')->name('product');
 
