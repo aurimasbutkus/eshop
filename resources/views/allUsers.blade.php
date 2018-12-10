@@ -1,68 +1,74 @@
 @extends('layouts.app')
 @section('content')
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <div class="input-group input-group-lg">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+    </div>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <table id="myTable" class="table table-hover">
+            <thead>
 
-    <!-- Styles -->
-</head>
-<body>
-<div class="form-group" >
-    <label for="search">Find Users:</label>
-    <input type="search" class="form-control" id="search" name="search">
-</div>
-<table class="table table-hover">
+            <th>Name</th>
 
-    <thead>
+            <th>Last Name</th>
 
-    <th>Name</th>
+            <th>Email</th>
 
-    <th>Last Name</th>
+            <th>Phone</th>
 
-    <th>Email</th>
+            <th>Address</th>
 
-    <th>Phone</th>
+            <th>Country</th>
 
-    <th>Address</th>
+            </thead>
 
-    <th>Country</th>
+            <tbody>
+            @foreach($users as $user)
 
-    </thead>
+                <tr>
 
-    <tbody>
-    @foreach($users as $user)
+                    <td>{{$user->name}} </td>
 
-        <tr>
+                    <td>{{$user->last_name}} </td>
 
-            <td>{{$user->name}} </td>
+                    <td>{{$user->email}} </td>
 
-            <td>{{$user->last_name}} </td>
+                    <td>{{$user->phone}} </td>
 
-            <td>{{$user->email}} </td>
+                    <td>{{$user->address}} </td>
 
-            <td>{{$user->phone}} </td>
+                    <td>{{$user->country}} </td>
 
-            <td>{{$user->address}} </td>
+                    <td><a href="{!! route('editUserRedirect', ['id'=>$user->id]) !!}"><button type="edit" class="btn btn-default" href="">Edit</button></td>
 
-            <td>{{$user->country}} </td>
+                    <td><a href="{!! route('deleteUser', ['id'=>$user->id]) !!}"><button type="delete"  class="btn btn-default">Delete</button></td>
 
-            <td><button type="edit" class="btn btn-default">Edit</button> <button type="delete" class="btn btn-default">Delete</button> </td>
+                    <td><a href="{{ route('seePurchaseHistory',['user' => $user]) }}"><button type="purchaseHistory" class="btn btn-default">Purchase History</button> </td>
 
-            <td><a href="{{ route('seePurchaseHistory') }}"><button type="purchaseHistory" class="btn btn-default">Purchase History</button> </td>
+                </tr>
+            @endforeach
 
-        </tr>
-    @endforeach
+            </tbody>
+        </table>
 
-    </tbody>
+        <script>
+            function myFunction() {
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
 
-</table>
-</body>
-</html>
 @endsection

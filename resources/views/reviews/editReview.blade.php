@@ -1,52 +1,43 @@
 @extends('layouts.app')
+
 @section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Dashboard</div>
 
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
 
-</head>
-<body>
+                        <div class="container">
+                            <h2>Redaguoti atsiliepima</h2>
+                            <form action="editR">
+                                <div class="form-group">
+                                    <label for="text">Tekstas:</label>
+                                    <input type="text" class="form-control" id="text" name="text">
+                                </div>
+                                <div class="form-group">
+                                    <h4>įvertinimas:</h4>
+                                    <select name="rating">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    </div>
+                                <button type="submit" class="btn btn-default">Save</button>
+                            </form>
+                        </div>
 
-<div class="container-fluid">
-    <div class="row content">
-
-        <div class="col-sm-9">
-
-            <hr>
-            <h4>Edit review:</h4>
-            <form role="form">
-                <div class="form-group">
-                    <textarea class="form-control" rows="3" required></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    Rating: 3
-                </div>
-                <button type="save" class="btn btn-success">Save</button>
-            </form>
-
-            <hr>
-
-
+            </div>
+        </div>
     </div>
-
-
-<br><br>
-
-
-
-
-
-<footer class="container-fluid">
-    <p>Footer Text</p>
-</footer>
-
-</body>
-</html>
 @endsection

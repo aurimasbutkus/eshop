@@ -1,142 +1,99 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div id="products" class="row list-group">
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            Product title</h4>
-                        <p class="group inner list-group-item-text">
-                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead">
-                                    $21.00
-                                </p>
-                            </div>
-                            <div class="col-xs-12 col-md-4 pull-right">
-                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="{{ route('product') }}"><span
-                                            class="glyphicon glyphicon-eye-open"></span></a>
-                                <a class="btn btn-success" data-toggle="tooltip" title="Add to cart" href="#"><span
-                                            class="glyphicon glyphicon-shopping-cart"></span></a>
-                            </div>
-                        </div>
+    <div class="row">
+        <div class="col-sm-2 mt-3 ml-3">
+            <div class="card">
+                <div class="card-header">
+                    Categories
+                    <div class="float-right" data-toggle="tooltip"
+                         title="You can filter products by selecting specific categories">
+                        <i class="material-icons">help</i>
                     </div>
                 </div>
-            </div>
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            Product title</h4>
-                        <p class="group inner list-group-item-text">
-                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead">
-                                    $21.00
-                                </p>
-                            </div>
-                            <div class="col-xs-12 col-md-4 pull-right">
-                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="#"><span
-                                            class="glyphicon glyphicon-eye-open"></span></a>
-                                <a class="btn btn-success" data-toggle="tooltip" title="Add to cart" href="#"><span
-                                            class="glyphicon glyphicon-shopping-cart"></span></a>
+                <div class="d-flex flex-column pt-3 pb-3" id="categoryList">
+                    @foreach($categories as $category)
+                        <div class="m-auto w-50">
+                            <div>
+                                <input type="checkbox" class="category" id="{{ $category }}">
+                                {{ $category }}
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            Product title</h4>
-                        <p class="group inner list-group-item-text">
-                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead">
-                                    $21.00
-                                </p>
-                            </div>
-                            <div class="col-xs-12 col-md-4 pull-right">
-                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="#"><span
-                                            class="glyphicon glyphicon-eye-open"></span></a>
-                                <a class="btn btn-success" data-toggle="tooltip" title="Add to cart" href="#"><span
-                                            class="glyphicon glyphicon-shopping-cart"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            Product title</h4>
-                        <p class="group inner list-group-item-text">
-                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead">
-                                    $21.00
-                                </p>
-                            </div>
-                            <div class="col-xs-12 col-md-4 pull-right">
-                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="#"><span
-                                            class="glyphicon glyphicon-eye-open"></span></a>
-                                <a class="btn btn-success" data-toggle="tooltip" title="Add to cart" href="#"><span
-                                            class="glyphicon glyphicon-shopping-cart"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            Product title</h4>
-                        <p class="group inner list-group-item-text">
-                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead">
-                                    $21.00
-                                </p>
-                            </div>
-                            <div class="col-xs-12 col-md-4 pull-right">
-                                <a class="btn btn-primary" data-toggle="tooltip" title="View product" href="#"><span
-                                            class="glyphicon glyphicon-eye-open"></span></a>
-                                <a class="btn btn-success" data-toggle="tooltip" title="Add to cart" href="#"><span
-                                            class="glyphicon glyphicon-shopping-cart"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
 
+        <div class="col-sm-9">
+            <div class="container d-flex flex-wrap justify-content-around" id="productList">
+                @foreach($products as $product)
+                    <div class="card w-30 mt-5" id="{{ $product->category }}">
+                        <img src="http://placehold.it/400x250/000/fff" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $product->title }}</h5>
+                            <p class="card-text">
+                                {{ $product->description }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="container d-inline-flex justify-content-between">
+                                <p class="card-tex mt-auto mb-auto">
+                                    ${{ $product->price }}
+                                </p>
+                                <div class="mt-auto mb-auto">
+                                    <a href="{{ route('product', ['id' => $product->id]) }}" class="card-link"
+                                       data-toggle="tooltip" title="View details">
+                                        <i class="material-icons">visibility</i>
+                                    </a>
+                                    @if(\Illuminate\Support\Facades\Auth::check())
+                                        <form method="post" action="{{route('addToCart')}}">
+                                            @csrf
+                                            <input type="hidden" name="user_id"
+                                                   value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <input type="submit" class="card-link" data-toggle="tooltip"
+                                                   title="Add to cart" value="Add to cart">
+
+                                            </input>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
+
+
 
     <script>
         $(document).ready(function () {
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
-            })
+            });
+
+            $('.category').on('change', function () {
+                let productList = $('#productList').children();
+                let categories = [];
+                $('#categoryList').find(':checked').each(function () {
+                    categories.push(this.id)
+                });
+
+                if (categories.length === 0) {
+                    productList.show();
+                    return;
+                }
+
+                productList.each(function () {
+                    if (categories.indexOf(this.id) !== -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
         });
     </script>
 @endsection
