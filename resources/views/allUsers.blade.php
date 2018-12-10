@@ -39,7 +39,9 @@
 
                     <td>{{$user->country}} </td>
 
-                    <td><button type="edit" class="btn btn-default">Edit</button> <button type="delete" class="btn btn-default">Delete</button> </td>
+                    <td><a href="{!! route('editUserRedirect', ['id'=>$user->id]) !!}"><button type="edit" class="btn btn-default" href="">Edit</button></td>
+
+                    <td><a href="{!! route('deleteUser', ['id'=>$user->id]) !!}"><button type="delete"  class="btn btn-default">Delete</button></td>
 
                     <td><a href="{{ route('seePurchaseHistory',['user' => $user]) }}"><button type="purchaseHistory" class="btn btn-default">Purchase History</button> </td>
 
