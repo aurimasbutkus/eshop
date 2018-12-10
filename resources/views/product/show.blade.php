@@ -50,6 +50,11 @@
                 </div>
             </div>
         </div>
+
+    </div>
+    <div class="container">
+        <h1>Prekės atsiliepimai</h1>
+        <a href="{!! route('showReview', ['id'=>$product->id]) !!}" ><button>xd</button>
     </div>
 
     <style>

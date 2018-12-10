@@ -31,11 +31,36 @@ Route::get('/editReview', 'ReviewController@editReview')->name('editReview');
 
 Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStatistics');
 
+Route::post('newReview', 'ReviewController@review');
+
+Route::get('/productReview/{id}', [
+    'uses' => 'ReviewController@showReview',
+])->name('showReview');
+
+Route::post('newComment', 'ReviewController@comment');
+
+Route::get('/reviewComent/{id}', [
+    'uses' => 'ReviewController@showComment',
+])->name('showComment');
+
+
+Route::get('/deleteReview/{id}', [
+    'uses' => 'ReviewController@deleteReview',
+])->name('deleteReview');
+
+Route::get('/editReview/{id}', [
+    'uses' => 'ReviewController@editReview',
+])->name('editRedirectReview');
+
+Route::post('editR', 'ReviewController@updateR');
+
 //PRODUCTS
 
 Route::get('/', 'ProductController@index')->name('main');
 
 Route::get('/product/{product}', 'ProductController@show')->name('product');
+
+
 
 //USERS
 
