@@ -25,6 +25,12 @@
                 @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                     <li class="nav-item"><a class="nav-link {{ Route::currentRouteNamed('allUsers') ? 'active' : ''  }}" href="{{route('allUsers')}}">Display users</a></li>
                     <li class="nav-item"><a class="nav-link {{ Route::currentRouteNamed('exportbuyerList') ? 'active' : ''  }}" href="{{route('exportbuyerList')}}">Export order list</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('new-product') }}" class="dropdown-item">New Product</a>
+                        </div>
+                    </li>
                 @endif
                 <li class="nav-item"><a class="nav-link {{ Route::currentRouteNamed('') ? 'active' : ''  }}" href="#">Contact</a></li>
                 <li class="nav-item"><a class="nav-link {{ Route::currentRouteNamed('allReviews') ? 'active' : ''  }}" href="{{route('allReviews')}}">Reviews</a></li>
@@ -48,49 +54,6 @@
         </ul>
     </div>
 </nav>
-
-{{--<nav class="navbar navbar-inverse">--}}
-    {{--<div class="container-fluid">--}}
-        {{--<div class="navbar-header">--}}
-            {{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">--}}
-                {{--<span class="icon-bar"></span>--}}
-                {{--<span class="icon-bar"></span>--}}
-                {{--<span class="icon-bar"></span>--}}
-            {{--</button>--}}
-            {{--<a class="navbar-brand" href="{{ route('main') }}">E-shop</a>--}}
-        {{--</div>--}}
-        {{--<div class="collapse navbar-collapse" id="myNavbar">--}}
-            {{--<ul class="nav navbar-nav">--}}
-                {{--@auth--}}
-                    {{--<li class="active"><a href="{{ route('main') }}">Home</a></li>--}}
-                    {{--<li><a href="#">Deals</a></li>--}}
-                    {{--<li><a href="#">Stores</a></li>--}}
-                    {{--<li><a href="{{route('allUsers')}}">Display users</a></li>--}}
-                {{--<li><a href="{{route('exportbuyerList')}}">Export order list</a></li>--}}
-                {{--<li><a href="#">Contact</a></li>--}}
-                    {{--<li><a href="{{route('allReviews')}}">Reviews</a></li>--}}
-                    {{--<li><a href="{{route('showStatistics')}}">Statistics</a></li>--}}
-                {{--@endauth--}}
-
-            {{--</ul>--}}
-            {{--<ul class="nav navbar-nav navbar-right">--}}
-                {{--@auth--}}
-                    {{--<li><a href="{{route('editUser')}}"><span class="glyphicon glyphicon-user"></span> Edit account</a></li>--}}
-                    {{--<li><a href="/order"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>--}}
-                    {{--<li>--}}
-                        {{--<a onclick="$('#logout-form').submit()">Logout</a>--}}
-                        {{--<form id="logout-form" method="POST" action="{{ @route('logout') }}">--}}
-                            {{--{{ csrf_field() }}--}}
-                        {{--</form>--}}
-                    {{--</li>--}}
-                {{--@else--}}
-                    {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-                    {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-                {{--@endauth--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</nav>--}}
 
 @yield('content')
 
