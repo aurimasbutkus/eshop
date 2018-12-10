@@ -35,6 +35,9 @@ Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStat
 
 Route::get('/', 'ProductController@index')->name('main');
 
+Route::get('/products', 'ProductController@create')->name('new-product');
+Route::post('/products', 'ProductController@store')->name('create-product');
+
 Route::get('/product/{product}', 'ProductController@show')->name('product');
 
 //USERS
