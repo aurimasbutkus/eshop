@@ -23,6 +23,7 @@ Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 
 Route::post('/payment', 'OrderController@payment')->name('payment');
 
+
 Route::post('/addcart', 'CartController@add')->name('addToCart');
 Route::post('/addorder', 'OrderController@addOrder')->name('addOrder');
 
@@ -32,6 +33,8 @@ Route::get('/removecart/{id}', 'CartController@remove')->name('removeFromCart');
 // REVIEWS
 
 Route::get('/orders', 'OrderController@orders')->name('orders');
+
+// REVIEWS
 
 Route::get('/allReviews', 'ReviewController@allReviews')->name('allReviews');
 

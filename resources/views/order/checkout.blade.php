@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
-        <!DOCTYPE html>
+@section('content')<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
