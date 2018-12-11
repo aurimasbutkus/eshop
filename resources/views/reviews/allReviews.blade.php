@@ -18,26 +18,26 @@
 
         <div class="col-sm-9">
 
-            <h4>Leave a review:</h4>
-            <form role="form" method="post" action="newReview">
-                <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                <div class="form-group">
-                    <textarea  name="text" class="form-control" rows="3" required autofocus></textarea>
-                    @csrf
-                </div>
-                <input name="productName" type="hidden" value="{{'name'}}">
-                <div class="form-group">
-                    <h4>Reitingas:</h4>
-                    <select name="rating">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+            {{--<h4>Leave a review:</h4>--}}
+            {{--<form role="form" method="post" action="newReview">--}}
+                {{--<input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">--}}
+                {{--<div class="form-group">--}}
+                    {{--<textarea  name="text" class="form-control" rows="3" required autofocus></textarea>--}}
+                    {{--@csrf--}}
+                {{--</div>--}}
+                {{--<input name="productName" type="hidden" value="{{'name'}}">--}}
+                {{--<div class="form-group">--}}
+                    {{--<h4>Reitingas:</h4>--}}
+                    {{--<select name="rating">--}}
+                        {{--<option value="1">1</option>--}}
+                        {{--<option value="2">2</option>--}}
+                        {{--<option value="3">3</option>--}}
+                        {{--<option value="4">4</option>--}}
+                        {{--<option value="5">5</option>--}}
+                    {{--</select>--}}
+                {{--</div>--}}
+                {{--<button type="submit" class="btn btn-success">Submit</button>--}}
+            {{--</form>--}}
 
             <hr>
             <h4><small>RECENT POSTS</small></h4>
