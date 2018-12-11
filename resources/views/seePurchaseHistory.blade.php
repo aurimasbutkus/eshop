@@ -17,16 +17,12 @@
 <table class="table table-hover">
 
     <thead>
-
-    <th>Product Name</th>
-
-    <th>Description</th>
-
-    <th>Specification</th>
-
+    
     <th>Status</th>
 
     <th>Amount_Paid</th>
+
+    <th>Specification</th>
 
     </thead>
 
