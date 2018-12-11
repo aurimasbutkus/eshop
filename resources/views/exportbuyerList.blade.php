@@ -8,7 +8,7 @@
 
     <th>Last Name</th>
 
-    <th><a href="{{route('exportToPDF')}}">Export</th>
+
 
 
     </thead>
