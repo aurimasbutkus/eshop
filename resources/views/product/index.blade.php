@@ -51,10 +51,10 @@
                                             <input type="hidden" name="user_id"
                                                    value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
-                                            <input type="submit" class="card-link" data-toggle="tooltip"
-                                                   title="Add to cart" value="Add to cart">
+                                            <button type="submit" class="card-link" data-toggle="tooltip" title="Add to cart" style="text-decoration: none;-webkit-appearance: none;color: #3490dc;cursor:pointer;">
+                                                <i class="material-icons">shopping_cart</i>
+                                            </button>
 
-                                            </input>
                                         </form>
                                     @endif
                                 </div>

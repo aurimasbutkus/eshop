@@ -73,18 +73,21 @@
                 <div class="panel-footer">
                     <ul class="pager">
                         <li class="previous">
-                            <form method="post" action="{{route('payment')}}">
+                            <form method="post" action="{{route('payment')}}" id="checkoutForm">
                                 @csrf
                                 @php
 
                                     $text = '';
-                                    foreach($items as $item) {
-                                        $text .= "<strong>" . $item['name'] . "</strong>  " . $item['cost'] . "<br>";
+                                    if(isset($items))
+                                    {
+                                        foreach($items as $item) {
+                                            $text .= "<strong>" . $item['name'] . "</strong>  " . $item['cost'] . "<br>";
+                                    }
                                 }
                                 @endphp
                                 <input type="hidden" name="text" value="{{$text}}">
-                                <input type="hidden" name="total" value="{{$total}}">
-                                <input class="btn btn-primary" type="submit" value="Proceed to payment"></input>
+                                <input type="hidden" name="total" value="{{$total}}" id="total">
+                                <input class="btn btn-primary" type="submit" value="Proceed to payment"/>
                             </form>
                         </li>
                     </ul>
@@ -94,6 +97,17 @@
     </div>
 </div>
 </div><br><br>
+
+<script>
+    $('#checkoutForm').on('submit', function (e) {
+        if($('#total').val() === "0")
+        {
+            alert('Cart is empty');
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+</script>
 
 <footer class="container-fluid text-center">
     <p>Online Store Copyright</p>

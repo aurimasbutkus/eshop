@@ -15,7 +15,7 @@ class CartController extends Controller
 
         $cart->save();
 
-        return redirect()->back();
+        return redirect()->route('checkout');
     }
 
     public function remove($id) {

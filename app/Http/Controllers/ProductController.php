@@ -19,7 +19,10 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('product.show')->with('product', $product);
+        $decodedConfig = json_decode($product->config, true);
+        $pictures = $decodedConfig['pictures'];
+
+        return view('product.show', ['product' => $product, 'pictures' => $pictures]);
     }
 
     public function create()
@@ -44,15 +47,13 @@ class ProductController extends Controller
 
         //$pictures = $request->file('pictures');
         $pictures = $request->file('pictures');
-        Log::error($pictures);
 
         $config = [];
 
-
         foreach($pictures as $picture)
         {
-            $path = $picture->store('products');
-            $config['pictures'] = $path;
+            $path = $picture->store('public/products');
+            $config['pictures'][] = $path;
         }
 
         Product::create([
