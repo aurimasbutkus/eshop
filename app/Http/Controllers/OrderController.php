@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use \App\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,8 +24,18 @@ class OrderController extends Controller
      */
     public function index($id)
     {
-        $order = DB::select("SELECT * FROM orders WHERE id = '$id'");;
-        return view('order.index')-> with('order', $order[0]);
+        $order = Order::find($id);
+        return view('order.index')-> with('order', $order);
+    }
+
+    public function message(Request $request){
+        $message = new Message();
+        $message->body = $request->text;
+        $message->order_id = $request->order_id;
+        $message->created_at = date('Y-m-d H:i:s');
+        $message->sent_at = date('Y-m-d H:i:s');
+        $message->save();
+        return redirect()->back();
     }
 
     public function checkout()

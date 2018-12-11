@@ -17,4 +17,9 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Product');
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }
 }

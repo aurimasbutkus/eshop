@@ -23,6 +23,7 @@ Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 
 Route::post('/payment', 'OrderController@payment')->name('payment');
 
+Route::post('/addMessage', 'OrderController@message')->name('add-message');
 
 Route::post('/addcart', 'CartController@add')->name('addToCart');
 Route::post('/addorder', 'OrderController@addOrder')->name('addOrder');
