@@ -16,22 +16,23 @@
 
                         <div class="container">
                             <h2>Redaguoti atsiliepima</h2>
-                            <form action="editR">
+                            <form method="post" action="{{ route('update-review', ['id' => $review->id]) }}">
+                                @csrf
                                 <div class="form-group">
                                     <label for="text">Tekstas:</label>
-                                    <input type="text" class="form-control" id="text" name="text">
+                                    <input type="text" class="form-control" id="text" name="text" value="{{ $review->body }}">
                                 </div>
                                 <div class="form-group">
                                     <h4>įvertinimas:</h4>
                                     <select name="rating">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                        <option value="1" {{ $review->rating == 1 ? 'selected' : '' }}>1</option>
+                                        <option value="2" {{ $review->rating == 2 ? 'selected' : '' }}>2</option>
+                                        <option value="3" {{ $review->rating == 3 ? 'selected' : '' }}>3</option>
+                                        <option value="4" {{ $review->rating == 4 ? 'selected' : '' }}>4</option>
+                                        <option value="5" {{ $review->rating == 5 ? 'selected' : '' }}>5</option>
                                     </select>
                                     </div>
-                                <button type="submit" class="btn btn-default">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </form>
                         </div>
 

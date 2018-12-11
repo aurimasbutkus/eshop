@@ -15,12 +15,6 @@ class ReviewController extends Controller
         return view('reviews.allReviews')->with('reviews',$reviews);
     }
 
-    public function editReview()
-    {
-
-        return view('reviews.editReview');
-    }
-
     public function showStatistics()
     {
         $stat =  DB::select("SELECT * from reviews");
@@ -75,23 +69,24 @@ class ReviewController extends Controller
         return redirect()->back();
     }
 
-    public function deleteReview($id)
+    public function deleteReview(Review $review)
     {
-        DB::table('reviews')->delete(['id' => $id]);
-        return redirect('allReviews');
-    }
-
-    public function editRedirectReview($id)
-    {
-        $review = DB::select("SELECT * FROM reviews WHERE id = '$id'");
-
-        return redirect('editReview')->with('review', $review);
-    }
-
-
-    public function updateR($id)
-    {
-         DB::insert("Insert * FROM reviews WHERE id = '$id'");
+        $review->delete();
         return redirect()->back();
+    }
+
+    public function editRedirectReview(Review $review)
+    {
+        return view('reviews.editReview')->with('review', $review);
+    }
+
+
+    public function updateR(Review $review, Request $request)
+    {
+        $review->body = $request->text;
+        $review->rating = $request->rating;
+        $review->save();
+
+        return redirect()->route('product', ['id' => $review->product->id]);
     }
 }

@@ -56,15 +56,15 @@ Route::get('/reviewComent/{id}', [
 ])->name('showComment');
 
 
-Route::get('/deleteReview/{id}', [
+Route::get('/deleteReview/{review}', [
     'uses' => 'ReviewController@deleteReview',
 ])->name('deleteReview');
 
-Route::get('/editReview/{id}', [
-    'uses' => 'ReviewController@editReview',
+Route::get('/editReview/{review}', [
+    'uses' => 'ReviewController@editRedirectReview',
 ])->name('editRedirectReview');
 
-Route::post('editR', 'ReviewController@updateR');
+Route::post('editR/{review}', 'ReviewController@updateR')->name('update-review');
 
 //PRODUCTS
 

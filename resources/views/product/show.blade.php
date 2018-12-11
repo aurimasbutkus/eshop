@@ -108,11 +108,19 @@
                     <hr>
                     @foreach($product->reviews as $review)
                         <div class="card">
-                            <div class="card-header">
-                                {{ $review->title }}
-                                <div class="clearfix small">
-                                    {{ $review->created_at }}
+                            <div class="card-header d-flex justify-content-between">
+                                <div>
+                                    {{ $review->title }}
+                                    <div class="clearfix small">
+                                        {{ \Carbon\Carbon::createFromTimeStamp(strtotime($review->created_at))->diffForHumans() }}
+                                    </div>
                                 </div>
+                                @if($review->user->id == auth::user()->id)
+                                    <div class="pull-right">
+                                        <a href="{!! route('editRedirectReview', ['id'=>$review->id]) !!}" class="btn">Edit</a>
+                                        <a href="{!! route('deleteReview', ['id'=>$review->id]) !!}" class="btn">Delete</a>
+                                    </div>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="d-flex flex-nowrap">
