@@ -35,12 +35,6 @@
 
         <tr>
 
-            <td>{{$userwithOrder->title}} </td>
-
-            <td>{{$userwithOrder->description}} </td>
-
-            <td>{{$userwithOrder->specification}} </td>
-
             <td>{{$userwithOrder->status}} </td>
 
             <td>{{$userwithOrder->amount_paid}} </td>

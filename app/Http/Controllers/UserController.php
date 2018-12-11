@@ -43,7 +43,8 @@ class UserController extends Controller
 
     public function seePurchaseHistory(User $user)
     {
-        $products = $user->orders->each->products;
+        $products = $user->orders;
+
 
         return view('seePurchaseHistory')->with('usersWithOrders',$products);
     }
