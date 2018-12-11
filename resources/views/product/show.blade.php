@@ -92,7 +92,7 @@
                             <textarea name="text" class="form-control" rows="3" required autofocus></textarea>
                             @csrf
                         </div>
-                        <input name="productName" type="hidden" value="{{'name'}}">
+                        <input name="product_id" type="hidden" value="{{ $product->id }}">
                         <div class="form-group">
                             <h4>Reitingas:</h4>
                             <select name="rating">
@@ -105,6 +105,27 @@
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
+                    <hr>
+                    @foreach($product->reviews as $review)
+                        <div class="card">
+                            <div class="card-header">
+                                {{ $review->title }}
+                                <div class="clearfix small">
+                                    {{ $review->created_at }}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-nowrap">
+                                    @for($i = 0; $i < $review->rating; $i++)
+                                        <i class="material-icons">stars</i>
+                                    @endfor
+                                </div>
+                                <div class="card-text mt-2">
+                                    {{ $review->body }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

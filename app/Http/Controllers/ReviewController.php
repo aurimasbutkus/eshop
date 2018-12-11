@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -50,7 +52,14 @@ class ReviewController extends Controller
         return redirect('allReviews')->with('product',$sproduct)->with('reviews',$sql);
     }
     public function review(Request $request){
-        $ss = DB::table('reviews')->insert(['body' => $request->text, 'rating' => $request->rating, 'product_name' => $request->productName]);
+        Review::create([
+            'title' => 'Product Review',
+            'status' => 'active',
+            'body' => $request->text,
+            'rating' => $request->rating,
+            'product_id' => $request->product_id,
+            'user_id' => isset(Auth::user()->id) ? Auth::user()->id : null,
+        ]);
         return redirect()->back();
     }
 
