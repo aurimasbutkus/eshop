@@ -17,11 +17,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // ORDERS
 
-Route::get('/order', 'OrderController@index')->name('order');
+Route::get('/order/{id}', 'OrderController@index')->name('order');
 
-Route::get('/checkout', 'OrderController@checkout')->name('order');
+Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 
-Route::get('/payment', 'OrderController@payment')->name('payment');
+Route::post('/payment', 'OrderController@payment')->name('payment');
+
+
+Route::post('/addcart', 'CartController@add')->name('addToCart');
+Route::post('/addorder', 'OrderController@addOrder')->name('addOrder');
+
+Route::post('/changeOrderStatus', 'OrderController@changeStatus')->name('changeOrderStatus');
+
+Route::get('/removecart/{id}', 'CartController@remove')->name('removeFromCart');
+// REVIEWS
+
+Route::get('/orders', 'OrderController@orders')->name('orders');
 
 // REVIEWS
 
@@ -58,8 +69,13 @@ Route::post('editR', 'ReviewController@updateR');
 
 Route::get('/', 'ProductController@index')->name('main');
 
-Route::get('/products', 'ProductController@create')->name('new-product');
-Route::post('/products', 'ProductController@store')->name('create-product');
+Route::get('/products/new', 'ProductController@create')->name('new-product')->middleware('admin');
+Route::post('/products', 'ProductController@store')->name('create-product')->middleware('admin');
+
+Route::get('/products/{product}/edit', 'ProductController@edit')->name('edit-product')->middleware('admin');
+Route::post('/products/{product}/edit', 'ProductController@update')->name('update-product')->middleware('admin');
+Route::delete('/products/{product}/delete', 'ProductController@destroy')->name('delete-product')->middleware('admin');
+Route::get('/products', 'ProductController@adminIndex')->name('list-products')->middleware('admin');
 
 Route::get('/product/{product}', 'ProductController@show')->name('product');
 

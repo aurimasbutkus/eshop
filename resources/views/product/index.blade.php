@@ -6,7 +6,8 @@
             <div class="card">
                 <div class="card-header">
                     Categories
-                    <div class="float-right" data-toggle="tooltip" title="You can filter products by selecting specific categories">
+                    <div class="float-right" data-toggle="tooltip"
+                         title="You can filter products by selecting specific categories">
                         <i class="material-icons">help</i>
                     </div>
                 </div>
@@ -40,12 +41,22 @@
                                     ${{ $product->price }}
                                 </p>
                                 <div class="mt-auto mb-auto">
-                                    <a href="{{ route('product', ['id' => $product->id]) }}" class="card-link" data-toggle="tooltip" title="View details">
+                                    <a href="{{ route('product', ['id' => $product->id]) }}" class="card-link"
+                                       data-toggle="tooltip" title="View details">
                                         <i class="material-icons">visibility</i>
                                     </a>
-                                    <a href="#" class="card-link" data-toggle="tooltip" title="Add to cart">
-                                        <i class="material-icons">add_shopping_cart</i>
-                                    </a>
+                                    @if(\Illuminate\Support\Facades\Auth::check())
+                                        <form method="post" action="{{route('addToCart')}}">
+                                            @csrf
+                                            <input type="hidden" name="user_id"
+                                                   value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <button type="submit" class="card-link" data-toggle="tooltip" title="Add to cart" style="text-decoration: none;-webkit-appearance: none;color: #3490dc;cursor:pointer;">
+                                                <i class="material-icons">shopping_cart</i>
+                                            </button>
+
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -63,18 +74,20 @@
                 $('[data-toggle="tooltip"]').tooltip()
             });
 
-            $('.category').on('change', function() {
+            $('.category').on('change', function () {
                 let productList = $('#productList').children();
                 let categories = [];
-                $('#categoryList').find(':checked').each(function() { categories.push(this.id) });
+                $('#categoryList').find(':checked').each(function () {
+                    categories.push(this.id)
+                });
 
-                if(categories.length === 0) {
+                if (categories.length === 0) {
                     productList.show();
                     return;
                 }
 
-                productList.each(function() {
-                    if(categories.indexOf(this.id) !== -1) {
+                productList.each(function () {
+                    if (categories.indexOf(this.id) !== -1) {
                         $(this).show();
                     } else {
                         $(this).hide();

@@ -17,7 +17,7 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if(!Auth::check() || !Auth::user()->hasRole('admin')) {
-            return redirect('main');
+            return redirect()->route('main');
         }
 
         return $next($request);

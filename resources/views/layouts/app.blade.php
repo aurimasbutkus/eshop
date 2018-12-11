@@ -29,6 +29,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                         <div class="dropdown-menu">
                             <a href="{{ route('new-product') }}" class="dropdown-item">New Product</a>
+                            <a href="{{ route('list-products') }}" class="dropdown-item">List Products</a>
                         </div>
                     </li>
                 @endif
@@ -38,9 +39,12 @@
             @endauth
         </ul>
         <ul class="navbar-nav float-right">
-            @auth
+
+        @auth
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteNamed('orders') ? 'active' : ''  }}" href="{{ route('orders') }}">Orders</a></li>
+
                 <li class="nav-item"><a class="nav-link {{ Route::currentRouteNamed('editUser') ? 'active' : ''  }}" href="{{route('editUser')}}"><span class="glyphicon glyphicon-user"></span> Edit account</a></li>
-                <li class="nav-item"><a class="nav-link" href="/order"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="/checkout"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 <li class="nav-item">
                     <a class="nav-link" onclick="$('#logout-form').submit()">Logout</a>
                     <form id="logout-form" method="POST" action="{{ @route('logout') }}">

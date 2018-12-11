@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Export extends Model
+class cart extends Model
 {
-    //
+    protected $guarded = [];
 }
