@@ -22,9 +22,25 @@ class UserController extends Controller
     }
     public function userWithOderList()
     {
-        $usersWithOrders = \App\User::all()->each->orders;
+        $users = \App\User::all();
+        $usersWithOrders = [];
+        foreach($users as $user)
+        {
+            if($user->orders->count() > 0)
+            {
+                $usersWithOrders[] = $user;
+            }
+        }
         return view('exportbuyerList')->with('usersWithOrders',$usersWithOrders);
     }
+
+    public function getUserOrders(User $user)
+    {
+        $userOrders = $user->orders;
+
+        return view('userOrders', ['user' => $user, 'orders' => $userOrders]);
+    }
+
     public function seePurchaseHistory(User $user)
     {
         $products = $user->orders->each->products;
@@ -45,9 +61,8 @@ class UserController extends Controller
         return redirect('editUser')->with('user', $user);
     }
 
-    public function exportToPDF()
+        public function exportToPDF(User $user)
     {
-        $usersWithOrders = \App\User::all()->each->orders;
         $storage_path = "";
         $pdf = new \Mpdf\Mpdf(['tempDir' =>  sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'margin_left' => 0, 'margin_right' => 0,
             'margin_top' => 0, 'margin_bottom' => 0, 'margin_header' => 0, 'margin_footer' => 0]);
@@ -63,56 +78,31 @@ class UserController extends Controller
         $pdf->AddPage();
 
 // create some HTML content
-        $html = <<<EOD
+        $html = '
 <table class="table table-hover">
-
     <thead>
-
-    <th>Name</th>
-
-    <th>Last Name</th>
-
-    <th>Address</th>
-
-    <th>Country</th>
-
     <th>Status</th>
-
-    <th>Amount_Paid</th>
-
-    <th><a href="{{route('exportToPDF')}}">Export</th>
-
-
+    <th>Amount Paid</th>
+    <th>Created at</th>
+    <th>Text</th>
     </thead>
-
     <tbody>
-
-        <tr>
-
-            <td>{{$usersWithOrders[0]->name}} </td>
-
-            <td>{{$usersWithOrders[0]->last_name}} </td>
-
-            <td>{{$usersWithOrders[0]->address}} </td>
-
-            <td>{{$usersWithOrders[0]->country}} </td>
-
-            <td>{{$usersWithOrders[0]->status}} </td>
-
-            <td>{{$usersWithOrders[0]->amount_paid}} </td>
-
-            <td>{{$usersWithOrders[0]->text}} </td>
-
-
-        </tr>
-
+';
+        foreach($user->orders as $order)
+        {
+            $html = $html . "
+            <tr>
+                <td>$order->status</td>
+                <td>$order->amount_paid</td>
+                <td>$order->created_at</td>
+                <td>$order->text</td>
+            </tr>
+        ";
+        }
+$html = $html . '
     </tbody>
-
-
-
 </table>
-
-EOD;
+';
         $pdf->WriteHTML($html);
 // ---------------------------------------------------------
 

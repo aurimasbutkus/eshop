@@ -8,14 +8,6 @@
 
     <th>Last Name</th>
 
-    <th>Address</th>
-
-    <th>Country</th>
-
-    <th>Status</th>
-
-    <th>Amount_Paid</th>
-
     <th><a href="{{route('exportToPDF')}}">Export</th>
 
 
@@ -30,23 +22,12 @@
 
             <td>{{$userwithOrder->last_name}} </td>
 
-            <td>{{$userwithOrder->address}} </td>
+            <td><a href="{!! route('userOrder', ['id'=>$userwithOrder->id]) !!}"><button class="btn btn-default">SeeOrders</button></td>
 
-            <td>{{$userwithOrder->country}} </td>
-
-            <td>{{$userwithOrder->status}} </td>
-
-            <td>{{$userwithOrder->amount_paid}} </td>
-
-            <td>{{$userwithOrder->text}} </td>
 
 
         </tr>
     @endforeach
-
     </tbody>
-
-
-
 </table>
 @endsection
