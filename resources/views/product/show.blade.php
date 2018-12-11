@@ -8,18 +8,27 @@
             <div class="col-sm">
                 <div id="carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        @foreach($pictures as $key => $picture)
-                            <li data-target="#carousel"
-                                data-slide-to="{{ $key }}"{{ $key == 0 ? ' class="active"' : '' }}></li>
-                        @endforeach
+                        @if(isset($pictures))
+                            @foreach($pictures as $key => $picture)
+                                <li data-target="#carousel"
+                                    data-slide-to="{{ $key }}"{{ $key == 0 ? ' class="active"' : '' }}></li>
+                            @endforeach
+                        @endif
                     </ol>
                     <div class="carousel-inner">
-                        @foreach($pictures as $key => $picture)
-                            <div class="carousel-item{{ $key == 0 ? ' active' : '' }}">
-                                <img class="d-block img-fluid w-100" src="{{ asset($storage::url($picture)) }}"
+                        @if(isset($pictures))
+                            @foreach($pictures as $key => $picture)
+                                <div class="carousel-item{{ $key == 0 ? ' active' : '' }}">
+                                    <img class="d-block img-fluid w-100" src="{{ asset($storage::url($picture)) }}"
+                                         alt="product photo">
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid w-100" src="http://placehold.it/400x250/000/fff"
                                      alt="product photo">
                             </div>
-                        @endforeach
+                        @endif
                     </div>
                     <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -61,24 +70,41 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-specification"
+                   role="tab"
                    aria-controls="v-pills-specification" aria-selected="true">Specification</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-reviews" role="tab"
                    aria-controls="v-pills-reviews" aria-selected="false">Reviews</a>
             </div>
-            <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-content container mt-3 mr-auto ml-0" id="v-pills-tabContent" style="max-width:80%;">
                 <div class="tab-pane fade show active" id="v-pills-specification" role="tabpanel"
                      aria-labelledby="v-pills-home-tab">
-                    <div class="container">
-                        {{ $product->specification }}
-                    </div>
+                    {{ $product->specification }}
                 </div>
-                <div class="tab-pane fade" id="v-pills-reviews" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <div class="container">
-
-                    </div>
+                <div class="tab-pane fade" id="v-pills-reviews" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
+                    <h4>Leave a review:</h4>
+                    <form role="form" method="post" action="{{ route('newReview') }}">
+                        <input type="hidden" name="user_id" value="{{$auth::user()->id}}">
+                        <div class="form-group">
+                            <textarea name="text" class="form-control" rows="3" required autofocus></textarea>
+                            @csrf
+                        </div>
+                        <input name="productName" type="hidden" value="{{'name'}}">
+                        <div class="form-group">
+                            <h4>Reitingas:</h4>
+                            <select name="rating">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
