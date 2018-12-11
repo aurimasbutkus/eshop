@@ -45,6 +45,8 @@
 
             <td>{{$userwithOrder->amount_paid}} </td>
 
+            <td>{{$userwithOrder->text}} </td>
+
 
         </tr>
     @endforeach

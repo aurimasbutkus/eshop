@@ -82,3 +82,5 @@ Route::get('/editUser', 'UserController@editUser')->name('editUser');
 Route::get('/exportbuyerList', 'UserController@userWithOderList')->name('exportbuyerList');
 
 Route::get('/seePurchaseHistory/{user}', 'UserController@seePurchaseHistory')->name('seePurchaseHistory');
+
+Route::get('/export', 'UserController@exportToPDF')->name('exportToPDF');

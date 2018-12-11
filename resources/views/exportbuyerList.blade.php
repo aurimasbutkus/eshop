@@ -16,6 +16,9 @@
 
     <th>Amount_Paid</th>
 
+    <th><a href="{{route('exportToPDF')}}">Export</th>
+
+
     </thead>
 
     <tbody>
@@ -35,11 +38,15 @@
 
             <td>{{$userwithOrder->amount_paid}} </td>
 
+            <td>{{$userwithOrder->text}} </td>
+
 
         </tr>
     @endforeach
 
     </tbody>
+
+
 
 </table>
 @endsection

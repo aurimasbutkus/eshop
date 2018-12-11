@@ -54,7 +54,7 @@
     </div>
     <div class="container">
         <h1>Prekės atsiliepimai</h1>
-        <a href="{!! route('showReview', ['id'=>$product->id]) !!}" ><button>xd</button>
+        <a href="{!! route('showReview', ['id'=>$product->id]) !!}" ><button>Žiūrėti atsiliepimus</button>
     </div>
 
     <style>
