@@ -42,7 +42,7 @@ Route::get('/editReview', 'ReviewController@editReview')->name('editReview');
 
 Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStatistics');
 
-Route::post('newReview', 'ReviewController@review');
+Route::post('newReview', 'ReviewController@review')->name('newReview');
 
 Route::get('/productReview/{id}', [
     'uses' => 'ReviewController@showReview',
