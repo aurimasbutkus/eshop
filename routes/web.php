@@ -42,7 +42,7 @@ Route::get('/editReview', 'ReviewController@editReview')->name('editReview');
 
 Route::get('/showStatistics', 'ReviewController@showStatistics')->name('showStatistics');
 
-Route::post('newReview', 'ReviewController@review');
+Route::post('newReview', 'ReviewController@review')->name('newReview');
 
 Route::get('/productReview/{id}', [
     'uses' => 'ReviewController@showReview',
@@ -93,8 +93,21 @@ Route::get('/editUser/{id}', [
 
 Route::get('/allUsers', 'UserController@getallUsers')->name('allUsers');
 
+Route::get('/userOrder/{user}', [
+    'uses' => 'UserController@getUserOrders',
+])->name('userOrder');
+
+Route::get('userOrders', function (){
+    return view('userOrders');
+})->name('userOrders');
+
 Route::get('/editUser', 'UserController@editUser')->name('editUser');
 
 Route::get('/exportbuyerList', 'UserController@userWithOderList')->name('exportbuyerList');
 
 Route::get('/seePurchaseHistory/{user}', 'UserController@seePurchaseHistory')->name('seePurchaseHistory');
+
+Route::get('/export/{user}', 'UserController@exportToPDF')->name('exportToPDF');
+
+
+
